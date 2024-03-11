@@ -44,10 +44,10 @@ class FirstScreen extends StatelessWidget {
                 foregroundColor: MaterialStatePropertyAll(Colors.black),
             ),
               onPressed: (){
-                  final ruta1= MaterialPageRoute(builder: (context){
+                  final ruta2= MaterialPageRoute(builder: (context){
                   return const Register();
               });
-            Navigator.push(context, ruta1);
+            Navigator.push(context, ruta2);
               },
               child:  const Text(
                 ' Registrarse ',

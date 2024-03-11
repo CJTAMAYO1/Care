@@ -1,3 +1,4 @@
+import 'package:care_v2/screens/second_register.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatelessWidget {
@@ -94,7 +95,13 @@ class Register extends StatelessWidget {
                 vertical: size.height * 0.05
               ),
               child: ElevatedButton(
-                onPressed: () => {},
+                onPressed: () {
+                 final ruta3= MaterialPageRoute(builder: (context){
+                  return const SecondRegister();
+              });
+            Navigator.push(context, ruta3);
+
+                },
                 child: const Text(
                 'Siguiente',
                 ),
