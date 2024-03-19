@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
-   Register({super.key});
+
+   Register({super.key });
 
   @override
   State<Register> createState() => _RegisterState(); 
@@ -11,9 +12,10 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
+    late String email;
+    late String password;
   final _auth = FirebaseAuth.instance;
-    String email;
-    String password;
+
     bool showSpinner=false;
 
   @override

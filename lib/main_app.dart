@@ -1,5 +1,6 @@
 import 'package:care_v2/screens/first_screen.dart';
 import 'package:care_v2/screens/home_screen.dart';
+import 'package:care_v2/screens/homescreen.dart';
 import 'package:care_v2/screens/login.dart';
 import 'package:care_v2/screens/register.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MainApp extends StatelessWidget {
       initialRoute: 'first_screen',
       routes: {
         'first_screen': (context) =>  const FirstScreen(),
-        'registration_screen': (context) => const Register(),
+        'registration_screen': (context) => Register(),
         'login_screen': (context) =>  const Login(),
         'home_screen': (context) => const HomeScreen()
       }

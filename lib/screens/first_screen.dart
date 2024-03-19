@@ -44,7 +44,7 @@ class FirstScreen extends StatelessWidget {
             ),
               onPressed: (){
                   final ruta2= MaterialPageRoute(builder: (context){
-                  return const Register();
+                  return Register();
               });
             Navigator.push(context, ruta2);
               },
