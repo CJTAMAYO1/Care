@@ -1,4 +1,3 @@
-
 import 'package:care_v2/screens/login.dart';
 import 'package:care_v2/screens/register.dart';
 import 'package:flutter/material.dart';

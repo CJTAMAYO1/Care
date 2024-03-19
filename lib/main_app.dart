@@ -1,4 +1,7 @@
 import 'package:care_v2/screens/first_screen.dart';
+import 'package:care_v2/screens/home_screen.dart';
+import 'package:care_v2/screens/login.dart';
+import 'package:care_v2/screens/register.dart';
 import 'package:flutter/material.dart';
 
 class MainApp extends StatelessWidget {
@@ -6,9 +9,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const MaterialApp(
+    return   MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FirstScreen(),
+      initialRoute: 'first_screen',
+      routes: {
+        'first_screen': (context) =>  const FirstScreen(),
+        'registration_screen': (context) => const Register(),
+        'login_screen': (context) =>  const Login(),
+        'home_screen': (context) => const HomeScreen()
+      }
     );
   }
 }

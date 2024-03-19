@@ -1,16 +1,32 @@
-import 'package:care_v2/screens/second_register.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Register extends StatelessWidget {
-  const Register({super.key});
+class Register extends StatefulWidget {
+   Register({super.key});
+
+  @override
+  State<Register> createState() => _RegisterState(); 
+
+}
+
+class _RegisterState extends State<Register> {
+
+  final _auth = FirebaseAuth.instance;
+    String email;
+    String password;
+    bool showSpinner=false;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    
     MainAxisAlignment.spaceEvenly;
+
     return  Scaffold(
+      
       backgroundColor:const Color.fromARGB(210, 255, 255, 255),
       body: ListView(
+        
           children: [
             //image
             const Padding(padding: EdgeInsets.symmetric(),
@@ -19,6 +35,7 @@ class Register extends StatelessWidget {
             height: 300,
             ),
             ),
+            
             // email
             Padding(
               padding: EdgeInsets.symmetric(
@@ -44,7 +61,7 @@ class Register extends StatelessWidget {
                 vertical: size.height * 0.05,
               ),
               child: TextField(
-                keyboardType: TextInputType.name,
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(
@@ -52,7 +69,9 @@ class Register extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                onChanged: (value) {},
+                onChanged: (value) {
+                  email=value;
+                },
               ),
             ),
              Padding(
@@ -68,7 +87,9 @@ class Register extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                onChanged: (value) {},
+                onChanged: (value) {
+                  password=value;
+                },
               ),
             ),
                          Padding(
@@ -88,22 +109,32 @@ class Register extends StatelessWidget {
                 onChanged: (value) {},
               ),
             ),
-            // button
             Padding(
               padding: EdgeInsets.symmetric(
               horizontal: size.width * 0.1,
                 vertical: size.height * 0.05
               ),
               child: ElevatedButton(
-                onPressed: () {
-                 final ruta3= MaterialPageRoute(builder: (context){
-                  return const SecondRegister();
-              });
-            Navigator.push(context, ruta3);
-
+                onPressed: () async {
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try {
+                    
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, 'home_screen');
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
+                  setState(() {
+                    showSpinner = false;
+                  });
                 },
                 child: const Text(
-                'Siguiente',
+                'Registrarse',
                 ),
               ),
             )
