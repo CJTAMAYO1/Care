@@ -1,3 +1,4 @@
+import 'package:care_v2/screens/homescreen.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -63,7 +64,12 @@ final size = MediaQuery.of(context).size;
             ),
             // button
             ElevatedButton(
-              onPressed: () => {
+              onPressed: () {
+                
+                  final ruta2= MaterialPageRoute(builder: (context){
+                  return const Home();
+              });
+            Navigator.push(context, ruta2);
                 
               },
               child: const Text(
